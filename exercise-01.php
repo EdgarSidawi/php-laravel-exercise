@@ -12,6 +12,11 @@ class Config
     {
         return $this->values;
     }
+
+    public function setValues($key, $value)
+    {
+        return $this->values[$key] = $value;
+    }
 }
 
 $config = new Config();
@@ -19,6 +24,9 @@ $config = new Config();
 $config->getValues()['second'] = 'mango'; /*This will throw an error unless the getValues function
 returns a reference to the $values property and this is done by using ampersand(&) 
 */
+$config->values['second'] = 'mango'; //option 2
+
+$config->setValues('second', 'mango'); //option 3
 
 echo $config->getValues()['first'] . PHP_EOL;
 echo $config->getValues()['second'] . PHP_EOL;
